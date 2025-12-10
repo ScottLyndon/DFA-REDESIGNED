@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
+      "use": "@vercel/static",
       "config": {
         "distDir": "dist/public"
       }
@@ -12,7 +12,5 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
-  ],
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm vercel-build"
+  ]
 }

@@ -12,16 +12,28 @@ export default defineConfig({
   plugins,
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"),
+      "@": path.resolve(__dirname, "..", "client", "src"),
       "@shared": path.resolve(__dirname, "shared"),
-      "@assets": path.resolve(__dirname, "attached_assets"),
+      "@assets": path.resolve(__dirname, "..", "client", "assets"),
     },
   },
   envDir: path.resolve(__dirname),
-  root: path.resolve(__dirname, "client"),
+  root: path.resolve(__dirname, "..", "client"),
+  publicDir: path.resolve(__dirname, "..", "client", "public"),
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'react-dom/client'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'jsxRuntime',
+          'react-dom/client': 'ReactDOMClient'
+        }
+      }
+    }
   },
   server: {
     port: 3000,
