@@ -12,5 +12,7 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
-  ]
+  ],
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm vercel-build"
 }
